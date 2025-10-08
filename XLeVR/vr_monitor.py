@@ -16,8 +16,9 @@ import socket
 from pathlib import Path
 from typing import Optional
 
-# Set the absolute path to the xlevr folder
-XLEVR_PATH = "/home/vec/lerobot/new/XLeVR"
+# Automatically detect the XLeVR path based on this file's location
+# Users can override this by setting the XLEVR_PATH environment variable
+XLEVR_PATH = os.environ.get('XLEVR_PATH', str(Path(__file__).parent.resolve()))
 
 def setup_xlevr_environment():
     """Setup xlevr environment"""
@@ -369,7 +370,7 @@ def main():
     # Check XLeVR path
     if not os.path.exists(XLEVR_PATH):
         print(f"❌ XLeVR path does not exist: {XLEVR_PATH}")
-        print("Please update XLEVR_PATH in the script")
+        print("Please set the XLEVR_PATH environment variable to the correct path")
         return
     
     # Create monitor
