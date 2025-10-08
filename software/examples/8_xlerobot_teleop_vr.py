@@ -8,6 +8,7 @@ Uses handle_vr_input with delta action control
 import asyncio
 import logging
 import math
+import os
 import sys
 import threading
 import time
@@ -16,6 +17,10 @@ import traceback
 # Third-party imports
 import numpy as np
 import pygame
+
+# Add XLeVR directory to path to import vr_monitor
+repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+sys.path.insert(0, os.path.join(repo_root, "XLeVR"))
 
 # Local imports
 from vr_monitor import VRMonitor
