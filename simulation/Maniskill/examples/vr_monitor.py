@@ -16,8 +16,12 @@ import socket
 from pathlib import Path
 from typing import Optional
 
-# 设置xlevr文件夹的绝对路径
-XLEVR_PATH = "/home/vec/lerobot/new/XLeVR"
+# 自动检测XLeVR路径，基于此文件的位置
+# 用户可以通过设置XLEVR_PATH环境变量来覆盖默认值
+# 默认情况下，假设XLeVR目录位于仓库根目录下
+_script_dir = Path(__file__).parent.resolve()
+_default_xlevr_path = _script_dir.parent.parent.parent / "XLeVR"
+XLEVR_PATH = os.environ.get('XLEVR_PATH', str(_default_xlevr_path))
 
 def setup_xlevr_environment():
     """设置xlevr环境"""
@@ -366,10 +370,10 @@ def main():
     print("🎮 XLeVR Monitor - XLeVR VR Control Information Monitor")
     print("=" * 60)
     
-    # 检查telegrip路径
+    # 检查XLeVR路径
     if not os.path.exists(XLEVR_PATH):
         print(f"❌ XLeVR path does not exist: {XLEVR_PATH}")
-        print("Please update XLEVR_PATH in the script")
+        print("Please set the XLEVR_PATH environment variable to the correct path")
         return
     
     # 创建监控器
