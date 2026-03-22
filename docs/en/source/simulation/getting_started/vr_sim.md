@@ -110,7 +110,11 @@ python -m mani_skill.examples.demo_ctrl_action_ee_VR \
 You can access VR control goals directly in Python:
 
 ```python
-from mani_skill.examples.vr_monitor import VRMonitor
+import sys
+import os
+# Add XLeVR directory to path
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../../XLeVR"))
+from vr_monitor import VRMonitor
 
 monitor = VRMonitor()
 monitor.initialize()

@@ -25,8 +25,10 @@ from mani_skill.utils.wrappers import RecordEpisode
 # Import vr_monitor instead of OculusReader
 import sys
 import os
-sys.path.append(os.path.abspath("/home/vec/lerobot/mani_skill/examples"))
-from mani_skill.examples.vr_monitor import VRMonitor
+# Add XLeVR directory to path to import vr_monitor
+repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.."))
+sys.path.insert(0, os.path.join(repo_root, "XLeVR"))
+from vr_monitor import VRMonitor
 
 import tyro
 from dataclasses import dataclass

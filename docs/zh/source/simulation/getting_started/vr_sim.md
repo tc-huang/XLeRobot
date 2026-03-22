@@ -109,7 +109,11 @@ python -m mani_skill.examples.demo_ctrl_action_ee_VR \
 您可以在Python中直接访问VR控制目标：
 
 ```python
-from mani_skill.examples.vr_monitor import VRMonitor
+import sys
+import os
+# 将XLeVR目录添加到路径
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../../XLeVR"))
+from vr_monitor import VRMonitor
 
 monitor = VRMonitor()
 monitor.initialize()
